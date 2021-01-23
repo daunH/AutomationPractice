@@ -45,8 +45,7 @@ public class HomePage {
     }
 
     public void selectProductCategoryFromMenu(String menuOption) {
-        for (int i = 0; i < menuList.size(); i++) {
-            WebElement menuItemW = menuList.get(i);
+        for (WebElement menuItemW : menuList) {
             String menuItemS = menuItemW.getText();
             if (menuOption.equals(menuItemS)) {
                 pageHelper.getActions().moveToElement(menuItemW);
@@ -56,8 +55,7 @@ public class HomePage {
     }
 
     public void selectProductFromCategory(String dropDownValue) {
-        for (int i = 0; i < valuesProductCategory.size(); i++) {
-            WebElement dropDownOptionW = valuesProductCategory.get(i);
+        for (WebElement dropDownOptionW : valuesProductCategory) {
             String dropDownOptionS = dropDownOptionW.getText();
             if (dropDownValue.equals(dropDownOptionS)) {
                 dropDownOptionW.click();
@@ -65,14 +63,6 @@ public class HomePage {
         }
     }
 
-    public int switchSlides() {
-        int amountOfSlides = 0;
-        for (int i = 0; i < slides.size(); i++) {
-            amountOfSlides++;
-            arrowSlider.click();
-        }
-        return amountOfSlides;
-    }
 
     public void waitingForProducts() {
         wait.until(ExpectedConditions.visibilityOf(pageHelper.getLastFoundProduct()));

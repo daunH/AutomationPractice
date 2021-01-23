@@ -7,27 +7,17 @@ import org.openqa.selenium.support.FindBy;
 
 public class PageHelper {
     private Actions actions = new Actions(new ChromeDriver());
-
-    @FindBy(xpath = "//h1[@class = 'page-header']")
-    private WebElement searchResultsInscription;
+    @FindBy(css = "a[data-default-name]")
+    public static WebElement randomProduct;
 
     @FindBy(xpath = "//form[@data-popup = 'auth']")
-    private WebElement loginForm;
+    public static WebElement loginForm;
 
-    @FindBy(xpath = "//div[@class = 'bread-crumbs']")
-    private WebElement breadCrumbs;
+    @FindBy(xpath = "//li[@itemprop = 'itemListElement']/span")
+    public static WebElement breadCrumbs;
 
     @FindBy(xpath = "(//div[@class = 'simple-slider-list__link']/a)[36]")
     private WebElement lastFoundProduct;
-
-
-    public WebElement getSearchResultsInscription() {
-        return searchResultsInscription;
-    }
-
-    public WebElement getLoginForm() {
-        return loginForm;
-    }
 
     public Actions getActions() {
         return actions;

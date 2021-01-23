@@ -34,7 +34,7 @@ public class LoginPage {
     }
 
     public void waitForLoginForm() {
-        wait.until(ExpectedConditions.visibilityOf(pageHelper.getLoginForm()));
+        wait.until(ExpectedConditions.visibilityOf(PageHelper.loginForm));
 
     }
 

@@ -28,24 +28,16 @@ public class HomePageTest {
 
 
     @Test
-    public void verifySearchField() {
+    public void verifyAbilityToSearchProduct() {
         homePage.searchProduct("lipstick");
         homePage.getSubmitButton().submit();
-        Assert.assertTrue(pageHelper.getSearchResultsInscription().isDisplayed());
+        Assert.assertTrue(PageHelper.randomProduct.isDisplayed());
     }
 
     @Test
     public void verifyAbilityToSelectFromDropDown() {
         homePage.selectProductCategoryFromMenu("Парфюмерия");
         homePage.selectProductFromCategory("Наборы");
-        Assert.assertTrue(pageHelper.getBreadCrumbs().isDisplayed());
+        Assert.assertTrue(PageHelper.breadCrumbs.getText().contains("Наборы"));
     }
-
-    @Test
-    public void verifyAbilityToSwitchSlides() {
-        int amountOfSlides = homePage.switchSlides();
-        Assert.assertTrue(amountOfSlides == 6);
-
-    }
-
 }

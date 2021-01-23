@@ -1,6 +1,6 @@
 package pageObjectTest;
 
-import PageObject.HomePage;
+
 import PageObject.LoginPage;
 import org.junit.Assert;
 import org.junit.Before;
@@ -13,7 +13,6 @@ public class LoginPageTest {
     private BasePageTest basePageTest = new BasePageTest();
     private LoginPage loginPage;
     private PageHelper pageHelper;
-    private HomePage homePage;
 
 
     @Before
@@ -21,14 +20,15 @@ public class LoginPageTest {
         basePageTest.openSite();
         loginPage = PageFactory.initElements(basePageTest.getWebDriver(), LoginPage.class);
         pageHelper = PageFactory.initElements(basePageTest.getWebDriver(), PageHelper.class);
-        homePage = PageFactory.initElements(basePageTest.getWebDriver(), HomePage.class);
+
     }
 
     @Test
-    public void verifyInabilityToLogInWithIncorrectData() {
-        loginPage.logIn("smmkvml", "12r12e12");
-        Assert.assertTrue("User not logged in", pageHelper.getLoginForm().isDisplayed());
+    public void verifyInabilityToLogInWithInvalidEmail() {
+        loginPage.logIn("invalid@gmail.com", "validpass1");
+        Assert.assertTrue("User logged in", PageHelper.loginForm.isDisplayed());
     }
 
 
 }
+
